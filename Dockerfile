@@ -115,3 +115,17 @@ ADD container-files /
 ENV \
   NODE_PATH=$NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules \
   PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+RUN cd /tmp && wget https://github.com/alexeyrybak/blitz/archive/0.9.1.tar.gz && \
+    tar xvzf 0.9.1.tar.gz && cd /tmp/blitz-0.9.1 && \
+    phpize && ./configure && make && make install
+
+RUN sed -i '$ a extension=/usr/lib64/php/modules/blitz.so' /etc/php.ini
+RUN sed -i '$ a env[DATABASE_HOST] = $DATABASE_HOST' /etc/php-fpm.d/www.conf
+RUN sed -i '$ a env[DATABASE_NAME] = $DATABASE_NAME' /etc/php-fpm.d/www.conf
+RUN sed -i '$ a env[DATABASE_USER] = $DATABASE_USER' /etc/php-fpm.d/www.conf
+RUN sed -i '$ a env[DATABASE_PASSWORD] = $DATABASE_PASSWORD' /etc/php-fpm.d/www.conf
+
+
+
+
