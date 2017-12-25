@@ -92,6 +92,15 @@ Default: `STATUS_PAGE_ALLOWED_IP=127.0.0.1`
 Example: `STATUS_PAGE_ALLOWED_IP=10.1.1.0/16`  
 Configure ip address that would be allowed to see PHP-FPM status page on `/fpm_status` URL.
 
+**DATABASE_HOST**
+
+**DATABASE_NAME**
+
+**DATABASE_USER**
+
+**DATABASE_PASSWORD**
+
+
 ## Authors
 
 Author: ryzy (<marcin@m12.io>)  
