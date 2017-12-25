@@ -95,11 +95,11 @@ RUN \
   `# Install Memcached, Redis PECL extensions from the source. Versions available in yum repo have dependency on igbinary which causes PHP seg faults in some PHP apps (e.g. Flow/Neos)...` \
   `# Install PHP Memcached ext from the source...` \
   yum install -y libmemcached-devel && \
-  git clone https://github.com/php-memcached-dev/php-memcached.git && cd php-memcached && git checkout php7 && \
+  git clone https://github.com/php-memcached-dev/php-memcached.git && cd php-memcached && git checkout -b php7 origin/php7 && \
   phpize && ./configure && make && make install && \
   echo "extension=memcached.so" > /etc/php.d/50-memcached.ini && \
   `# Install PHP Redis ext from the source...` \
-  git clone https://github.com/phpredis/phpredis.git && cd phpredis && git checkout php7 && \
+  git clone https://github.com/phpredis/phpredis.git && cd phpredis && git checkout develop  && \
   phpize && ./configure && make && make install && \
   echo "extension=redis.so" > /etc/php.d/50-redis.ini && \
 
@@ -115,10 +115,6 @@ ADD container-files /
 ENV \
   NODE_PATH=$NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules \
   PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
-
-RUN cd /tmp && wget https://github.com/alexeyrybak/blitz/archive/0.9.1.tar.gz && \
-    tar xvzf 0.9.1.tar.gz && cd /tmp/blitz-0.9.1 && \
-    phpize && ./configure && make && make install
 
 RUN sed -i '$ a extension=/usr/lib64/php/modules/blitz.so' /etc/php.ini
 RUN sed -i '$ a env[DATABASE_HOST] = $DATABASE_HOST' /etc/php-fpm.d/www.conf
