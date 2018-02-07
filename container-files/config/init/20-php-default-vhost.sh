@@ -10,8 +10,8 @@ VHOSTS_DEFAULT_TARGET_CONF="/etc/nginx/hosts.d/default.conf"
 
 if [ "${NGINX_GENERATE_DEFAULT_VHOST^^}" = TRUE ]; then
   cat $VHOSTS_DEFAULT_SOURCE_CONF > $VHOSTS_DEFAULT_TARGET_CONF
-  mkdir -p /data/www/default
-  echo "default vhost # created on $(date)" > /data/www/default/phpinfo.php
-  echo "<?php phpinfo();" >> /data/www/default/phpinfo.php
+  mkdir -p /data/www/web
+  echo "default vhost # created on $(date)" > /data/www/web/phpinfo.php
+  echo "<?php phpinfo();" >> /data/www/web/phpinfo.php
   echo "Nginx: default *catch-all* vhost with PHP support generated."; echo
 fi

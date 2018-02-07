@@ -42,7 +42,7 @@ Custom PHP.ini directives are inside [/etc/php.d](container-files/etc/php.d/).
 # Directory structure inside image
 ```
 /data/www # meant to contain web content
-/data/www/default # root directory for the default vhost
+/data/www/web # root directory for the default vhost
 /data/logs/ # Nginx, PHP logs
 /data/tmp/php/ # PHP temp directories
 ```

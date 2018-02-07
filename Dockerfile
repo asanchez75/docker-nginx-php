@@ -121,6 +121,6 @@ RUN sed -i '$ a env[DATABASE_NAME] = $DATABASE_NAME' /etc/php-fpm.d/www.conf
 RUN sed -i '$ a env[DATABASE_USER] = $DATABASE_USER' /etc/php-fpm.d/www.conf
 RUN sed -i '$ a env[DATABASE_PASSWORD] = $DATABASE_PASSWORD' /etc/php-fpm.d/www.conf
 
-WORKDIR /data/www/default
+WORKDIR /data/www/web
 
 
